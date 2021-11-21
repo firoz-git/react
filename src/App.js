@@ -13,7 +13,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    axios.get("https://fdsawer.azurewebsites.net/api/").then((res) => {
+    axios.get("http://fdsawer.azurewebsites.net/api/").then((res) => {
       this.setState({
         tasks: res.data,
         id: 0,
@@ -26,7 +26,7 @@ class App extends React.Component {
     console.log(id);
     event.preventDefault();
     axios
-      .post("https://fdsawer.azurewebsites.net/api/", {
+      .post("http://fdsawer.azurewebsites.net/api/", {
         task: this.state.task, //adding new task
         status: "created",
       })
@@ -36,14 +36,14 @@ class App extends React.Component {
   }
 
   delete(id) {
-    axios.delete("https://fdsawer.azurewebsites.net/api/" + id).then(() => {
+    axios.delete("http://fdsawer.azurewebsites.net/api/" + id).then(() => {
       this.componentDidMount(); //deleting a completed task
     });
   }
 
   edit(id) {
     console.log(id)
-    axios.put("https://fdsawer.azurewebsites.net/api/" + id).then(() => {
+    axios.put("http://fdsawer.azurewebsites.net/api/" + id).then(() => {
       this.setState({
         status: "completed", //editing status of the task
       });      
